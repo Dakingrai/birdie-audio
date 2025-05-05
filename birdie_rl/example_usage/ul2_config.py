@@ -13,6 +13,16 @@ Empirical observation notes:
 
 '''
 
+one_config = [
+	{
+		"name": 'infilling',
+		"prob": 1.0, # These sampling probabilities will be normalized automatically
+		"corruption_rate": 0.15,
+		"paradigm_token": "[X]",
+		"mean_tokens_per_span": 3,
+	}
+]
+
 dummy_config = [
 	{
 		"name": 'infilling',

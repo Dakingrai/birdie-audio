@@ -3,3 +3,4 @@ __pycache__/
 *.pyc
 push.sh
 birdie_rl/birdie_reward_model/example_usage/compress.py
+data/

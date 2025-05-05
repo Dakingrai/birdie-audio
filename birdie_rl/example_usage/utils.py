@@ -2,13 +2,16 @@
 from datasets import load_dataset
 import numpy as np
 import torch
+import pdb
 
 def reward_fn(
 	action_taken=None,
 	old_loss=None,
 	new_loss=None,
 	old_step_idx=None,
-	new_step_idx=None
+	new_step_idx=None,
+	old_loss_vector=None,  # Expect the old loss vector
+	new_loss_vector=None   # Expect the new loss vector
 ):
 	"""
 	The default reward function from the original Birdie paper. 
@@ -17,6 +20,13 @@ def reward_fn(
 
 	The unused arguments (action_taken, old_step_idx, and new_step_idx) are there to improve support for different reward functions and features, such as decaying rewards over time.
 	"""
+	if new_loss_vector is not None:
+		# If the new loss vector is provided, use the mean of the new loss vector
+		new_loss = torch.mean(new_loss_vector)
+	if old_loss_vector is not None:
+		# If the old loss vector is provided, use the mean of the old loss vector
+		old_loss = torch.mean(old_loss_vector)
+	
 	# Compute the change in loss
 	delta_loss = (new_loss - old_loss)
 
@@ -41,7 +51,7 @@ def reward_fn(
 
 
 
-def data_generator(split, worker_id, num_workers, rng_seed=0):
+def data_generator_old(split, worker_id, num_workers, rng_seed=0):
 	"""
 	The data_generator function will be called by each dataloading worker.
 	This currently only data parallel training, where each accelerator has its own copy of the model.
@@ -54,6 +64,41 @@ def data_generator(split, worker_id, num_workers, rng_seed=0):
 
 	# Load the TinyStories dataset from Hugging Face
 	ds = load_dataset("roneneldan/TinyStories", split=split)
+
+	# Shard the dataset among multiple workers
+	ds = ds.shard(num_shards=num_workers, index=worker_id)
+
+	# Shuffle the dataset for randomness
+	ds = ds.shuffle(rng_seed)
+
+	# Return the prepared dataset
+	return ds
+
+
+def data_generator(split, worker_id, num_workers, rng_seed=0):
+	"""
+	The data_generator function will be called by each dataloading worker.
+	This currently only data parallel training, where each accelerator has its own copy of the model.
+
+	This function should return a generator for a given
+	  - split (e.g., "train", "validation", "test")
+	  - shards it by worker_id and num_workers
+	  - shuffles the data using rng_seed
+	"""
+
+	# Load the dataset from a local file
+	# ds = load_dataset("audiofolder", data_dir="data/genres_original/jazz", split=split, drop_labels=True)
+	train_file_path = "data/genres_original/jazz/train/jazz.txt"
+	validation_file_path = "data/genres_original/jazz/validation/jazz.txt"
+
+	ds = load_dataset(
+	    "text",
+	    data_files={"train": train_file_path, "validation": validation_file_path}, split =split
+	)
+
+	# Load the TinyStories dataset from Hugging Face (Replaced this with the local dataset)
+	# ds = load_dataset("roneneldan/TinyStories", split=split)
+	
 
 	# Shard the dataset among multiple workers
 	ds = ds.shard(num_shards=num_workers, index=worker_id)

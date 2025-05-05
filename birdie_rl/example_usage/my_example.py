@@ -12,9 +12,8 @@ import accelerate
 import numpy as np
 import tiktoken
 import torch
-from ul2_config import dummy_config, ul2_config, ul2_decoder_config, one_config
+from ul2_config import dummy_config, ul2_config, ul2_decoder_config
 import utils
-import pdb
 
 
 # Create a configuration dictionary for Birdie and training
@@ -23,7 +22,7 @@ config = {
 	## Please see ul2_config.py and utils.py for more details.
 	"reward_fn": utils.reward_fn,
 	"ds": utils.data_generator,
-	"objectives": one_config,
+	"objectives": ul2_config,
 	"tokenizer": tiktoken.get_encoding("o200k_base"),
 	"batch_size": 8,
 	"sequence_length": 1024, #changed from 2048 to 1024
@@ -93,18 +92,21 @@ for step_idx in range(config["num_steps"]):
 		(status_dict, status_str) = birdie.get_verbose_action()
 		print(status_str)
 
-# save the model
-# output_model_path = "saved_model.pt"  # Or any path you prefer
-# torch.save(birdie.model.state_dict(), output_model_path)
-# print(f"Model saved to {output_model_path}")
-
 # Show that we are done
 print("\n" * 3, end="")
 print("All done. Closing Birdie...")
 
-
 # Close Birdie and free associated resources
 birdie.close()
+
+pdb.set_trace()
+# save the model
+birdie.save_model(
+	"birdie_model.pt",
+	ul2_decoder_config,
+	ul2_config,
+	"birdie_model",
+)
 
 # Hard exit to kill remaining threads or processes.
 # Someone somewhere is holding onto VRAM...
