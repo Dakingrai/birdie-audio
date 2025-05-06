@@ -23,7 +23,7 @@ config = {
 	## Please see ul2_config.py and utils.py for more details.
 	"reward_fn": utils.reward_fn,
 	"ds": utils.data_generator,
-	"objectives": one_config,
+	"objectives": one_config, #ul2_config
 	"tokenizer": tiktoken.get_encoding("o200k_base"),
 	"batch_size": 8,
 	"sequence_length": 1024, #changed from 2048 to 1024
@@ -95,7 +95,7 @@ for step_idx in range(config["num_steps"]):
 
 # save the model
 # output_model_path = "saved_model.pt"  # Or any path you prefer
-# torch.save(birdie.model.state_dict(), output_model_path)
+# torch.save(birdie, output_model_path)
 # print(f"Model saved to {output_model_path}")
 
 # Show that we are done

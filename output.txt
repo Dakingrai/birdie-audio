@@ -1,0 +1,34 @@
+I'm a Birdie! Here are my config settings:
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  Starting async worker to create validation samples for {'name': 'prefix_language_modeling', 'prob': 1.0, 'corruption_rate': 0.15, 'prefix_fraction': 0.75, 'paradigm_token': '[S]', 'hash_str': '9ffe857f', 'nickname': 'prefix_language_modeling_9ffe857f', 'prob_initial': 0.3333333333333333} (1/7)
+  Starting async worker to create validation samples for {'name': 'infilling', 'prob': 0.5, 'corruption_rate': 0.15, 'paradigm_token': '[R]', 'mean_tokens_per_span': 3.0, 'hash_str': 'b23ca5eb', 'nickname': 'infilling_b23ca5eb', 'prob_initial': 0.16666666666666666} (2/7)
+  Starting async worker to create validation samples for {'name': 'infilling', 'prob': 0.5, 'corruption_rate': 0.15, 'paradigm_token': '[R]', 'mean_tokens_per_span': 9.0, 'hash_str': 'e9463cdc', 'nickname': 'infilling_e9463cdc', 'prob_initial': 0.16666666666666666} (3/7)
+  Starting async worker to create validation samples for {'name': 'infilling', 'prob': 0.25, 'corruption_rate': 0.5, 'paradigm_token': '[X]', 'mean_tokens_per_span': 3.0, 'hash_str': '4335465d', 'nickname': 'infilling_4335465d', 'prob_initial': 0.08333333333333333} (4/7)
+  Starting async worker to create validation samples for {'name': 'infilling', 'prob': 0.25, 'corruption_rate': 0.15, 'paradigm_token': '[X]', 'mean_tokens_per_span': 8.0, 'hash_str': 'b9879ac4', 'nickname': 'infilling_b9879ac4', 'prob_initial': 0.08333333333333333} (5/7)
+  Starting async worker to create validation samples for {'name': 'infilling', 'prob': 0.25, 'corruption_rate': 0.15, 'paradigm_token': '[X]', 'mean_tokens_per_span': 64.0, 'hash_str': 'f040897d', 'nickname': 'infilling_f040897d', 'prob_initial': 0.08333333333333333} (6/7)
+  Starting async worker to create validation samples for {'name': 'infilling', 'prob': 0.25, 'corruption_rate': 0.5, 'paradigm_token': '[X]', 'mean_tokens_per_span': 64.0, 'hash_str': 'a2671899', 'nickname': 'infilling_a2671899', 'prob_initial': 0.08333333333333333} (7/7)
+  Reading in validation samples for {'name': 'prefix_language_modeling', 'prob': 1.0, 'corruption_rate': 0.15, 'prefix_fraction': 0.75, 'paradigm_token': '[S]', 'hash_str': '9ffe857f', 'nickname': 'prefix_language_modeling_9ffe857f', 'prob_initial': 0.3333333333333333} (1/7)
+  Reading in validation samples for {'name': 'infilling', 'prob': 0.5, 'corruption_rate': 0.15, 'paradigm_token': '[R]', 'mean_tokens_per_span': 3.0, 'hash_str': 'b23ca5eb', 'nickname': 'infilling_b23ca5eb', 'prob_initial': 0.16666666666666666} (2/7)
+  Reading in validation samples for {'name': 'infilling', 'prob': 0.5, 'corruption_rate': 0.15, 'paradigm_token': '[R]', 'mean_tokens_per_span': 9.0, 'hash_str': 'e9463cdc', 'nickname': 'infilling_e9463cdc', 'prob_initial': 0.16666666666666666} (3/7)
+  Reading in validation samples for {'name': 'infilling', 'prob': 0.25, 'corruption_rate': 0.5, 'paradigm_token': '[X]', 'mean_tokens_per_span': 3.0, 'hash_str': '4335465d', 'nickname': 'infilling_4335465d', 'prob_initial': 0.08333333333333333} (4/7)
+  Reading in validation samples for {'name': 'infilling', 'prob': 0.25, 'corruption_rate': 0.15, 'paradigm_token': '[X]', 'mean_tokens_per_span': 8.0, 'hash_str': 'b9879ac4', 'nickname': 'infilling_b9879ac4', 'prob_initial': 0.08333333333333333} (5/7)
+  Reading in validation samples for {'name': 'infilling', 'prob': 0.25, 'corruption_rate': 0.15, 'paradigm_token': '[X]', 'mean_tokens_per_span': 64.0, 'hash_str': 'f040897d', 'nickname': 'infilling_f040897d', 'prob_initial': 0.08333333333333333} (6/7)
+  Reading in validation samples for {'name': 'infilling', 'prob': 0.25, 'corruption_rate': 0.5, 'paradigm_token': '[X]', 'mean_tokens_per_span': 64.0, 'hash_str': 'a2671899', 'nickname': 'infilling_a2671899', 'prob_initial': 0.08333333333333333} (7/7)
+  reward_model_config[batch_size]: 8
+  reward_model_config[sequence_length]: 2048
+  reward_model_config[num_workers]: 8
+  reward_model_config[steps_between_evaluations]: 50
+  reward_model_config[num_steps]: 200
+  reward_model_config[accelerator]: <accelerate.accelerator.Accelerator object at 0x7fb211f35b20>
+  reward_model_config[tokenizer]: <Encoding 'o200k_base'>
+  reward_model_config[objectives]: [{'name': 'prefix_language_modeling', 'prob': 1.0, 'corruption_rate': 0.15, 'prefix_fraction': 0.75, 'paradigm_token': '[S]', 'hash_str': '9ffe857f', 'nickname': 'prefix_language_modeling_9ffe857f', 'prob_initial': 0.3333333333333333}, {'name': 'infilling', 'prob': 0.5, 'corruption_rate': 0.15, 'paradigm_token': '[R]', 'mean_tokens_per_span': 3.0, 'hash_str': 'b23ca5eb', 'nickname': 'infilling_b23ca5eb', 'prob_initial': 0.16666666666666666}, {'name': 'infilling', 'prob': 0.5, 'corruption_rate': 0.15, 'paradigm_token': '[R]', 'mean_tokens_per_span': 9.0, 'hash_str': 'e9463cdc', 'nickname': 'infilling_e9463cdc', 'prob_initial': 0.16666666666666666}, {'name': 'infilling', 'prob': 0.25, 'corruption_rate': 0.5, 'paradigm_token': '[X]', 'mean_tokens_per_span': 3.0, 'hash_str': '4335465d', 'nickname': 'infilling_4335465d', 'prob_initial': 0.08333333333333333}, {'name': 'infilling', 'prob': 0.25, 'corruption_rate': 0.15, 'paradigm_token': '[X]', 'mean_tokens_per_span': 8.0, 'hash_str': 'b9879ac4', 'nickname': 'infilling_b9879ac4', 'prob_initial': 0.08333333333333333}, {'name': 'infilling', 'prob': 0.25, 'corruption_rate': 0.15, 'paradigm_token': '[X]', 'mean_tokens_per_span': 64.0, 'hash_str': 'f040897d', 'nickname': 'infilling_f040897d', 'prob_initial': 0.08333333333333333}, {'name': 'infilling', 'prob': 0.25, 'corruption_rate': 0.5, 'paradigm_token': '[X]', 'mean_tokens_per_span': 64.0, 'hash_str': 'a2671899', 'nickname': 'infilling_a2671899', 'prob_initial': 0.08333333333333333}]
+  reward_model_config[ds]: <function huggingface_data_generator_fn at 0x7fb0ec0235e0>
+  reward_model_config[text_grabber_fn]: <function text_grabber_fn at 0x7fb0e7fbde50>
+  reward_model_config[start_generating_paradigm]: 
+<|assistant|>
+
+  reward_model_config[reward_signal_dims]: 7
+  reward_model_config[num_objectives]: 7
+  reward_model_config[hidden_dims]: (256, 256, 256, 256)
+  reward_model_config[lr]: 0.0005
+  reward_model_config[device]: cuda

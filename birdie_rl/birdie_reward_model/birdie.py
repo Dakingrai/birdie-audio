@@ -29,6 +29,7 @@ import numpy as np
 import torch
 import json
 from functools import partial
+import pdb
 
 from birdie_rl.birdie_reward_model.reward_model import RewardModel
 from birdie_rl.pipeline_generator import pipeline_data_generator
@@ -177,12 +178,14 @@ class Birdie:
 					"agent_explore_cook_prob": lambda x: x.get("agent_explore_cook_prob", 1.0),
 			
 		"""
-
+		
 		if config is None:
 			config = {}
 
 		# Store raw config for reference
 		self.config = config
+		print("I'm a Birdie! Here are my config settings:")
+		print("----" * 60)
 
 		# Core settings
 		self.accelerator = config.get("accelerator", None)
@@ -346,10 +349,10 @@ class Birdie:
 			# This loop will start the workers for each objective
 			for objective_idx, objective in enumerate(self.validation_objectives):
 
-				self.accelerator.print(
-					f"  Starting async worker to create validation samples for {objective} "
-					f"({objective_idx+1}/{len(self.validation_objectives)})"
-				)
+				# self.accelerator.print(
+				# 	f"  Starting async worker to create validation samples for {objective} "
+				# 	f"({objective_idx+1}/{len(self.validation_objectives)})"
+				# )
 
 				controller, ds_validation_iter = pipeline_data_generator(
 					data_generator=self.ds_validation,

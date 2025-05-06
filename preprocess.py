@@ -33,6 +33,7 @@ def audio_to_tokens(filepath):
 	audio = waveform.mean(dim=0).numpy()
 	audio = np.clip(audio, -1, 1)
 	audio_str = " ".join([f"{x:.4f}" for x in audio])
+	
 	return audio_str
 
 def process_and_save(input_dir, output_dir):
